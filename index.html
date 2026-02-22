@@ -1,133 +1,1736 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" id="html-root">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gate Dynamics — Medientechnik & AV-Lösungen | Viersen</title>
-  <meta name="description" content="Gate Dynamics – Medientechnik, Konferenzraum-Integration, Planung, Programmierung, Audio-Engineering und Hardwareverkauf. Standort: Viersen." />
-  <link rel="stylesheet" href="styles.css">
+  <title>Gate Dynamics — Professionelle AV-Integration | Viersen</title>
+  <meta name="description" content="Gate Dynamics – Planung, Engineering und Installation professioneller AV-Technik. Von der Konzeption bis zur Inbetriebnahme." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics (kostenlos) -->
+  <!-- 
+    TRACKING EINRICHTEN:
+    1. analytics.google.com → Neues Konto erstellen
+    2. Measurement ID kopieren (G-XXXXXXXXXX)
+    3. Beide "G-XXXXXXXXXX" unten ersetzen
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-dark: #A07830;
+      --gold-light: #E8C97A;
+      --gold-pale: rgba(201,168,76,0.08);
+      --accent: #1A1A2E;
+      --accent2: #0F3460;
+      --white: #ffffff;
+      --off-white: #F9F9F9;
+      --text: #111111;
+      --muted: #6B7280;
+      --border: #EBEBEB;
+      --nav-height: 76px;
+      --container: 1240px;
+      --radius: 12px;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow: 0 8px 32px rgba(0,0,0,0.10);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.14);
+      --btn-bg: #1A1A2E;
+      --btn-hover: #0F3460;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:#fff;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+    .container{max-width:var(--container);margin:0 auto;padding:0 40px;width:100%;}
+    img{display:block;max-width:100%;}
+    a{color:inherit;}
+
+    /* ==============================
+       COOKIE BANNER
+    ============================== */
+    .cookie-banner{
+      position:fixed;bottom:0;left:0;right:0;
+      background:#111;color:#fff;
+      z-index:9999;padding:18px 40px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      flex-wrap:wrap;
+      border-top:2px solid var(--gold);
+      transform:translateY(0);
+      transition:transform 0.4s ease;
+    }
+    .cookie-banner.hidden{transform:translateY(110%);}
+    .cookie-banner p{font-size:0.88rem;color:rgba(255,255,255,0.8);max-width:70ch;line-height:1.6;}
+    .cookie-banner p a{color:var(--gold-light);text-decoration:underline;}
+    .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
+    .btn-cookie{padding:9px 20px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;border:none;font-family:inherit;transition:all 0.2s;}
+    .btn-cookie.accept{background:var(--gold);color:#111;}
+    .btn-cookie.accept:hover{background:var(--gold-light);}
+    .btn-cookie.decline{background:rgba(255,255,255,0.1);color:#fff;}
+    .btn-cookie.decline:hover{background:rgba(255,255,255,0.2);}
+
+    /* ==============================
+       LANG SWITCHER
+    ============================== */
+    .lang-btn{
+      display:flex;align-items:center;gap:6px;
+      padding:7px 14px;border-radius:8px;
+      background:var(--gold-pale);border:1.5px solid rgba(201,168,76,0.25);
+      font-size:0.82rem;font-weight:700;letter-spacing:0.04em;
+      cursor:pointer;color:var(--gold-dark);transition:all 0.2s;
+      font-family:inherit;flex-shrink:0;
+    }
+    .lang-btn:hover{background:rgba(201,168,76,0.15);}
+    .lang-btn svg{width:16px;height:16px;}
+
+    /* ==============================
+       HEADER
+    ============================== */
+    .site-header{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      height:var(--nav-height);
+    }
+    .header-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      height:100%;gap:16px;
+    }
+    .logo-link{
+      display:flex;align-items:center;gap:12px;
+      text-decoration:none;flex-shrink:0;
+    }
+    .logo-img{height:48px;width:auto;}
+    .logo-text-block{display:flex;flex-direction:column;line-height:1;}
+    .logo-main{
+      font-family:'Playfair Display',serif;
+      font-size:1.55rem;font-weight:700;
+      color:var(--gold-dark);letter-spacing:-0.01em;
+    }
+    .logo-sub{
+      font-size:0.7rem;font-weight:600;
+      color:var(--gold);letter-spacing:0.14em;
+      text-transform:uppercase;margin-top:3px;
+    }
+
+    /* NAV */
+    .main-nav{display:flex;align-items:center;gap:2px;}
+    .nav-item{position:relative;}
+    .nav-link{
+      display:flex;align-items:center;gap:5px;
+      padding:8px 13px;
+      font-size:0.88rem;font-weight:600;
+      color:var(--text);text-decoration:none;
+      border-radius:8px;transition:all 0.18s;
+      cursor:pointer;border:none;background:none;
+      font-family:inherit;white-space:nowrap;
+    }
+    .nav-link:hover,.nav-link.active{
+      background:var(--off-white);color:var(--gold-dark);
+    }
+    .chevron{
+      width:13px;height:13px;
+      transition:transform 0.22s;flex-shrink:0;
+      stroke:currentColor;fill:none;
+      stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .nav-item:hover .chevron,.nav-item:focus-within .chevron{
+      transform:rotate(180deg);
+    }
+
+    /* DROPDOWN */
+    .dropdown{
+      position:absolute;top:calc(100% + 6px);left:0;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;padding:8px;
+      min-width:220px;
+      box-shadow:var(--shadow-lg);
+      opacity:0;visibility:hidden;
+      transform:translateY(-8px);
+      transition:all 0.2s ease;
+      list-style:none;z-index:200;
+    }
+    .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{
+      opacity:1;visibility:visible;transform:translateY(0);
+    }
+    .dropdown a{
+      display:flex;align-items:center;gap:8px;
+      padding:9px 12px;
+      font-size:0.87rem;font-weight:500;
+      color:var(--muted);text-decoration:none;
+      border-radius:8px;transition:all 0.16s;
+    }
+    .dropdown a:hover{
+      background:var(--off-white);color:var(--text);
+      padding-left:16px;
+    }
+    .dropdown-divider{
+      height:1px;background:var(--border);
+      margin:6px 8px;
+    }
+
+    /* HEADER RIGHT */
+    .header-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .btn-nav-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 20px;
+      background:var(--btn-bg);color:#fff;
+      font-size:0.88rem;font-weight:700;
+      text-decoration:none;border-radius:10px;
+      transition:all 0.2s;white-space:nowrap;
+      border:none;cursor:pointer;font-family:inherit;
+    }
+    .btn-nav-cta:hover{background:var(--btn-hover);transform:translateY(-1px);}
+
+    /* HAMBURGER */
+    .hamburger{
+      display:none;flex-direction:column;gap:5px;
+      cursor:pointer;padding:8px;background:none;border:none;
+    }
+    .hamburger span{
+      display:block;width:23px;height:2px;
+      background:var(--text);border-radius:2px;
+      transition:all 0.28s;
+    }
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+    /* MOBILE NAV */
+    .mobile-nav{
+      display:none;
+      position:fixed;top:var(--nav-height);left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--border);
+      z-index:999;padding:16px 24px 28px;
+      max-height:calc(100vh - var(--nav-height));
+      overflow-y:auto;
+    }
+    .mobile-nav.open{display:block;}
+    .mobile-section{
+      font-size:0.72rem;font-weight:700;letter-spacing:0.1em;
+      text-transform:uppercase;color:var(--gold);
+      padding:14px 4px 6px;
+    }
+    .mobile-nav a{
+      display:block;padding:11px 4px;
+      font-size:0.93rem;font-weight:600;
+      color:var(--text);text-decoration:none;
+      border-bottom:1px solid var(--border);
+    }
+    .mobile-nav a:last-child{border-bottom:none;}
+
+    /* ==============================
+       BUTTONS (global)
+    ============================== */
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;
+      background:var(--btn-bg);color:#fff;
+      font-size:0.95rem;font-weight:700;
+      text-decoration:none;border-radius:10px;
+      transition:all 0.22s;border:none;
+      cursor:pointer;font-family:inherit;
+    }
+    .btn-primary:hover{
+      background:var(--btn-hover);
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(26,26,46,0.3);
+    }
+    .btn-outline{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:13px 26px;background:transparent;
+      color:var(--text);font-size:0.95rem;font-weight:700;
+      text-decoration:none;border-radius:10px;
+      border:2px solid var(--border);transition:all 0.22s;
+      cursor:pointer;font-family:inherit;
+    }
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold-dark);}
+    .btn-gold{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;
+      background:var(--gold);color:#111;
+      font-size:0.95rem;font-weight:700;
+      text-decoration:none;border-radius:10px;
+      transition:all 0.22s;border:none;
+      cursor:pointer;font-family:inherit;
+    }
+    .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+    /* ==============================
+       SECTION BASICS
+    ============================== */
+    .section{padding:88px 0;}
+    .section-alt{background:var(--off-white);}
+    .section-dark{background:var(--accent);color:#fff;}
+    .section-label{
+      display:inline-block;font-size:0.75rem;font-weight:700;
+      letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:12px;
+    }
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.9rem,3vw,2.8rem);
+      font-weight:700;color:var(--text);
+      line-height:1.18;margin-bottom:16px;
+      letter-spacing:-0.02em;
+    }
+    .section-dark .section-title{color:#fff;}
+    .section-sub{
+      font-size:1rem;color:var(--muted);
+      line-height:1.75;max-width:58ch;
+    }
+    .section-dark .section-sub{color:rgba(255,255,255,0.65);}
+    .section-head{margin-bottom:52px;}
+    .section-head.centered{text-align:center;}
+    .section-head.centered .section-sub{margin:0 auto;}
+
+    /* ==============================
+       HERO
+    ============================== */
+    .hero{
+      padding-top:calc(var(--nav-height) + 72px);
+      padding-bottom:88px;
+      background:#fff;position:relative;overflow:hidden;
+    }
+    .hero-bg-shape{
+      position:absolute;top:0;right:-10%;
+      width:55%;height:100%;
+      background:linear-gradient(150deg,#f8f4ee 0%,#fdf9f4 60%,#fff 100%);
+      clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);
+      z-index:0;
+    }
+    .hero-inner{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:72px;align-items:center;position:relative;z-index:1;
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(201,168,76,0.1);color:var(--gold-dark);
+      font-size:0.78rem;font-weight:700;letter-spacing:0.07em;
+      text-transform:uppercase;padding:6px 14px;
+      border-radius:100px;margin-bottom:22px;
+      border:1px solid rgba(201,168,76,0.2);
+    }
+    .hero-badge::before{
+      content:'';width:6px;height:6px;
+      background:var(--gold);border-radius:50%;
+    }
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.4rem,4.5vw,3.8rem);
+      font-weight:700;color:var(--text);
+      line-height:1.1;margin-bottom:22px;
+      letter-spacing:-0.025em;
+    }
+    .hero h1 em{font-style:italic;color:var(--gold-dark);}
+    .hero-lead{
+      font-size:1.05rem;color:var(--muted);
+      line-height:1.8;max-width:52ch;margin-bottom:36px;
+    }
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+    .hero-img-wrap{position:relative;}
+    .hero-img{
+      width:100%;aspect-ratio:16/11;
+      object-fit:cover;border-radius:20px;
+      box-shadow:var(--shadow-lg);display:block;
+    }
+    .hero-img-placeholder{
+      width:100%;aspect-ratio:16/11;
+      background:linear-gradient(135deg,#f0e8d8 0%,#e6d9c4 100%);
+      border-radius:20px;display:flex;
+      align-items:center;justify-content:center;
+      flex-direction:column;gap:10px;
+      color:var(--gold);font-weight:600;
+      font-size:0.85rem;letter-spacing:0.05em;
+      text-transform:uppercase;text-align:center;
+    }
+    .hero-trust{
+      display:flex;gap:28px;margin-top:40px;
+      padding-top:32px;border-top:1px solid var(--border);
+      flex-wrap:wrap;
+    }
+    .trust-item{display:flex;align-items:center;gap:10px;}
+    .trust-item svg{width:18px;height:18px;stroke:var(--gold);flex-shrink:0;}
+    .trust-item span{font-size:0.88rem;font-weight:600;color:var(--muted);}
+
+    /* hero floating card */
+    .hero-card{
+      position:absolute;bottom:-20px;left:-24px;
+      background:#fff;border-radius:14px;
+      padding:16px 20px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.12);
+      border:1px solid var(--border);
+      display:flex;align-items:center;gap:14px;
+    }
+    .hero-card-icon{
+      width:44px;height:44px;
+      background:var(--gold-pale);border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    .hero-card-icon svg{width:22px;height:22px;stroke:var(--gold-dark);}
+    .hero-card strong{
+      display:block;font-size:0.95rem;font-weight:700;
+      color:var(--text);
+    }
+    .hero-card span{font-size:0.8rem;color:var(--muted);}
+
+    /* ==============================
+       PROCESS / WIE WIR ARBEITEN
+    ============================== */
+    .process-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      border:1px solid var(--border);border-radius:16px;
+      overflow:hidden;
+    }
+    .process-step{
+      padding:32px 26px;border-right:1px solid var(--border);
+      position:relative;transition:background 0.2s;
+    }
+    .process-step:last-child{border-right:none;}
+    .process-step:hover{background:var(--off-white);}
+    .step-num{
+      font-family:'Playfair Display',serif;
+      font-size:2.8rem;font-weight:700;
+      color:rgba(201,168,76,0.15);
+      line-height:1;margin-bottom:14px;
+    }
+    .process-step h3{
+      font-size:0.95rem;font-weight:700;
+      color:var(--text);margin-bottom:8px;
+    }
+    .process-step p{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+
+    /* ==============================
+       SERVICES
+    ============================== */
+    .services-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+    }
+    .service-card{
+      background:#fff;border-radius:16px;
+      padding:28px 22px;
+      border:1px solid var(--border);
+      transition:all 0.25s;position:relative;overflow:hidden;
+    }
+    .service-card::after{
+      content:'';position:absolute;
+      bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));
+      transform:scaleX(0);transform-origin:left;
+      transition:transform 0.3s;
+    }
+    .service-card:hover{
+      border-color:rgba(201,168,76,0.3);
+      box-shadow:var(--shadow);transform:translateY(-4px);
+    }
+    .service-card:hover::after{transform:scaleX(1);}
+    .service-icon{
+      width:46px;height:46px;
+      background:var(--gold-pale);border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:16px;
+    }
+    .service-icon svg{
+      width:22px;height:22px;
+      stroke:var(--gold-dark);fill:none;
+      stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .service-card h3{
+      font-size:0.98rem;font-weight:700;
+      color:var(--text);margin-bottom:8px;
+    }
+    .service-card p{font-size:0.86rem;color:var(--muted);line-height:1.65;}
+
+    /* ==============================
+       SOLUTIONS
+    ============================== */
+    .solutions-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .sol-card{
+      background:#fff;border-radius:14px;
+      overflow:hidden;border:1px solid var(--border);
+      transition:all 0.25s;
+    }
+    .sol-card:hover{
+      box-shadow:var(--shadow);transform:translateY(-4px);
+      border-color:rgba(201,168,76,0.25);
+    }
+    .sol-img{
+      width:100%;height:160px;
+      background:linear-gradient(135deg,#f0e8d8,#e4d4b8);
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.75rem;font-weight:600;
+      color:var(--gold);letter-spacing:0.06em;
+      text-transform:uppercase;
+      object-fit:cover;
+    }
+    .sol-body{padding:18px;}
+    .sol-tag{
+      font-size:0.7rem;font-weight:700;
+      letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--gold);margin-bottom:6px;
+    }
+    .sol-body h3{
+      font-size:0.93rem;font-weight:700;
+      color:var(--text);margin-bottom:6px;
+    }
+    .sol-body p{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+
+    /* ==============================
+       INDUSTRIES
+    ============================== */
+    .industries-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+    .ind-card{
+      background:#fff;border:1px solid var(--border);
+      border-radius:12px;padding:22px 18px;
+      transition:all 0.22s;cursor:default;
+    }
+    .ind-card:hover{
+      border-color:var(--gold-light);
+      box-shadow:var(--shadow-sm);
+      transform:translateY(-3px);
+    }
+    .ind-icon{
+      width:40px;height:40px;
+      background:var(--gold-pale);border-radius:9px;
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:12px;
+    }
+    .ind-icon svg{
+      width:20px;height:20px;
+      stroke:var(--gold-dark);fill:none;
+      stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+    }
+    .ind-card h3{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+    .ind-card p{font-size:0.8rem;color:var(--muted);line-height:1.55;}
+
+    /* ==============================
+       ABOUT / PROZESS DETAIL
+    ============================== */
+    .about-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:80px;align-items:start;
+    }
+    .about-img-placeholder{
+      width:100%;aspect-ratio:4/5;
+      background:linear-gradient(135deg,#f5ece0,#e8d8c0);
+      border-radius:20px;
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;gap:8px;
+      font-size:0.82rem;color:var(--gold);
+      font-weight:600;text-transform:uppercase;letter-spacing:0.05em;
+    }
+    .about-text p{
+      font-size:0.97rem;color:var(--muted);
+      line-height:1.82;margin-bottom:18px;
+    }
+
+    /* Timeline */
+    .timeline{margin-top:16px;}
+    .tl-item{
+      display:flex;gap:18px;margin-bottom:24px;
+      padding-bottom:24px;border-bottom:1px solid var(--border);
+    }
+    .tl-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+    .tl-num{
+      width:36px;height:36px;flex-shrink:0;
+      background:var(--gold-pale);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.8rem;font-weight:800;color:var(--gold-dark);
+      margin-top:2px;
+    }
+    .tl-content h4{font-size:0.93rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+    .tl-content p{font-size:0.84rem;color:var(--muted);line-height:1.65;}
+
+    /* ==============================
+       PARTNER LOGOS
+    ============================== */
+    .partner-grid{
+      display:flex;flex-wrap:wrap;gap:12px;
+    }
+    .partner-logo{
+      background:#fff;border:1.5px solid var(--border);
+      border-radius:11px;padding:14px 24px;
+      display:flex;align-items:center;justify-content:center;
+      height:68px;min-width:130px;
+      transition:all 0.2s;
+    }
+    .partner-logo:hover{
+      border-color:var(--gold-light);
+      box-shadow:var(--shadow-sm);
+    }
+    .partner-logo img{
+      max-height:36px;max-width:110px;
+      object-fit:contain;
+      filter:grayscale(1) opacity(0.55);
+      transition:filter 0.22s;
+    }
+    .partner-logo:hover img{filter:grayscale(0) opacity(1);}
+    .partner-logo-text{
+      font-size:0.85rem;font-weight:700;
+      color:var(--muted);letter-spacing:0.02em;
+    }
+
+    /* ==============================
+       CTA BAND
+    ============================== */
+    .cta-band{background:var(--accent);padding:80px 0;}
+    .cta-inner{
+      display:flex;align-items:center;
+      justify-content:space-between;gap:40px;flex-wrap:wrap;
+    }
+    .cta-inner h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.7rem,2.8vw,2.5rem);
+      color:#fff;font-weight:700;max-width:50ch;
+    }
+    .cta-inner p{color:rgba(255,255,255,0.65);margin-top:8px;font-size:0.95rem;}
+    .btn-white{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:14px 28px;background:#fff;color:var(--accent);
+      font-size:0.95rem;font-weight:700;
+      text-decoration:none;border-radius:10px;
+      transition:all 0.22s;white-space:nowrap;
+      border:none;cursor:pointer;font-family:inherit;flex-shrink:0;
+    }
+    .btn-white:hover{background:var(--gold);color:#111;}
+
+    /* ==============================
+       IMPRESSUM
+    ============================== */
+    .impressum-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+    }
+    .impressum-block h3{
+      font-size:0.78rem;font-weight:700;letter-spacing:0.09em;
+      text-transform:uppercase;color:var(--gold-dark);margin-bottom:10px;
+    }
+    .impressum-block p,.impressum-block a{
+      font-size:0.88rem;color:var(--muted);line-height:1.78;text-decoration:none;
+    }
+    .impressum-block a:hover{color:var(--gold-dark);}
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    .site-footer{background:#0d0d0d;color:rgba(255,255,255,0.55);padding:56px 0 28px;}
+    .footer-top{
+      display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;
+      gap:48px;margin-bottom:48px;padding-bottom:40px;
+      border-bottom:1px solid rgba(255,255,255,0.07);
+    }
+    .footer-brand .logo-main{color:#fff;}
+    .footer-brand .logo-sub{color:var(--gold-light);}
+    .footer-brand p{
+      font-size:0.86rem;margin-top:14px;line-height:1.75;
+      max-width:30ch;color:rgba(255,255,255,0.45);
+    }
+    .footer-col h4{
+      font-size:0.78rem;font-weight:700;letter-spacing:0.1em;
+      text-transform:uppercase;color:#fff;margin-bottom:14px;
+    }
+    .footer-col ul{list-style:none;}
+    .footer-col ul li{margin-bottom:9px;}
+    .footer-col ul li a{
+      color:rgba(255,255,255,0.45);text-decoration:none;
+      font-size:0.87rem;transition:color 0.18s;
+    }
+    .footer-col ul li a:hover{color:var(--gold-light);}
+    .footer-bottom{
+      display:flex;justify-content:space-between;
+      align-items:center;font-size:0.81rem;flex-wrap:wrap;gap:8px;
+    }
+    .footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;}
+    .footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+
+    /* ==============================
+       MODAL
+    ============================== */
+    .modal-overlay{
+      position:fixed;inset:0;
+      background:rgba(0,0,0,0.6);
+      z-index:2000;display:flex;
+      align-items:center;justify-content:center;
+      padding:24px;opacity:0;visibility:hidden;
+      transition:all 0.25s;
+    }
+    .modal-overlay.open{opacity:1;visibility:visible;}
+    .modal{
+      background:#fff;border-radius:22px;
+      padding:44px;max-width:540px;width:100%;
+      box-shadow:0 32px 100px rgba(0,0,0,0.25);
+      transform:scale(0.95) translateY(12px);
+      transition:all 0.25s;position:relative;
+      max-height:92vh;overflow-y:auto;
+    }
+    .modal-overlay.open .modal{transform:scale(1) translateY(0);}
+    .modal-close{
+      position:absolute;top:18px;right:18px;
+      background:var(--off-white);border:none;
+      width:36px;height:36px;border-radius:50%;
+      cursor:pointer;display:flex;align-items:center;
+      justify-content:center;font-size:1.1rem;
+      color:var(--muted);transition:all 0.18s;
+    }
+    .modal-close:hover{background:var(--border);}
+    .modal h2{
+      font-family:'Playfair Display',serif;
+      font-size:1.7rem;color:var(--text);margin-bottom:6px;
+    }
+    .modal-sub{font-size:0.9rem;color:var(--muted);margin-bottom:28px;}
+    .form-group{margin-bottom:14px;}
+    .form-group label{
+      display:block;font-size:0.83rem;font-weight:600;
+      color:var(--text);margin-bottom:6px;
+    }
+    .form-group input,.form-group textarea,.form-group select{
+      width:100%;padding:11px 13px;
+      border:1.5px solid var(--border);border-radius:9px;
+      font-size:0.92rem;font-family:inherit;
+      color:var(--text);background:#fff;
+      transition:border-color 0.18s;outline:none;
+    }
+    .form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+      border-color:var(--gold);
+    }
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .form-submit{width:100%;margin-top:8px;}
+    .form-note{font-size:0.78rem;color:var(--muted);margin-top:10px;text-align:center;}
+    .form-success{text-align:center;padding:24px 0;display:none;}
+    .form-success .check{
+      width:60px;height:60px;
+      background:var(--gold-pale);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 18px;font-size:1.8rem;color:var(--gold-dark);
+    }
+    .form-error{
+      background:#FEF2F2;border:1px solid #FECACA;
+      border-radius:9px;padding:12px 16px;
+      font-size:0.87rem;color:#991B1B;
+      margin-bottom:14px;display:none;
+    }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media(max-width:1200px){
+      .services-grid{grid-template-columns:repeat(2,1fr);}
+      .solutions-grid{grid-template-columns:repeat(3,1fr);}
+      .industries-grid{grid-template-columns:repeat(3,1fr);}
+      .footer-top{grid-template-columns:1fr 1fr;}
+      .process-grid{grid-template-columns:repeat(2,1fr);}
+      .process-step{border-bottom:1px solid var(--border);}
+      .process-step:nth-child(2){border-right:none;}
+      .process-step:nth-child(3){border-bottom:none;}
+      .process-step:nth-child(4){border-right:none;border-bottom:none;}
+    }
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:44px;}
+      .about-grid{grid-template-columns:1fr;gap:40px;}
+      .solutions-grid{grid-template-columns:repeat(2,1fr);}
+      .industries-grid{grid-template-columns:repeat(2,1fr);}
+      .impressum-grid{grid-template-columns:1fr;}
+      .cta-inner{flex-direction:column;align-items:flex-start;}
+      .container{padding:0 24px;}
+    }
+    @media(max-width:760px){
+      .main-nav,.btn-nav-cta,.lang-btn{display:none;}
+      .hamburger{display:flex;}
+      .services-grid{grid-template-columns:1fr;}
+      .solutions-grid{grid-template-columns:1fr;}
+      .industries-grid{grid-template-columns:1fr 1fr;}
+      .footer-top{grid-template-columns:1fr;gap:28px;}
+      .form-row{grid-template-columns:1fr;}
+      .hero{padding-top:calc(var(--nav-height) + 36px);padding-bottom:52px;}
+      .section{padding:56px 0;}
+      .container{padding:0 18px;}
+      .modal{padding:28px 20px;}
+      .hero-card{display:none;}
+      .process-grid{grid-template-columns:1fr;}
+      .process-step{border-right:none;}
+    }
+
+    /* ==============================
+       UTILITIES
+    ============================== */
+    .text-gold{color:var(--gold-dark);}
+    .mt-8{margin-top:8px;}
+    .mt-16{margin-top:16px;}
+    .gap-divider{height:1px;background:var(--border);margin:16px 0;}
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-grid">
-      <!-- Logo placeholder: ersetze durch <img src="logo.png" alt="Gate Dynamics"> wenn du dein Logo hochlädst -->
-      <div class="brand">
-        <div class="logo-text">
-          <div class="logo-line">Gate</div>
-          <div class="logo-line logo-sub">Dynamics</div>
-        </div>
-        <div class="tagline">Professionelle Medientechnik • Planung • Audio • Hardware</div>
-      </div>
 
-      <nav class="nav">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#referenzen">Referenzen</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>
+    Wir verwenden Cookies und Google Analytics, um die Nutzung unserer Website zu analysieren und zu verbessern.
+    Weitere Informationen in unserem <a href="#impressum">Impressum / Datenschutz</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn-cookie decline" onclick="declineCookies()">Ablehnen</button>
+    <button class="btn-cookie accept" onclick="acceptCookies()">Akzeptieren</button>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <!-- LOGO -->
+    <a href="#" class="logo-link" aria-label="Gate Dynamics – Startseite">
+      <!--
+        LOGO EINFÜGEN:
+        1. Lade "logo.png" in GitHub hoch (gleicher Ordner wie index.html)
+        2. Ersetze den div unten durch:
+           <img src="logo.png" alt="Gate Dynamics" class="logo-img">
+      -->
+      <div class="logo-text-block">
+        <span class="logo-main">Gate</span>
+        <span class="logo-sub">Dynamics</span>
+      </div>
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav aria-label="Hauptnavigation">
+      <ul class="main-nav" style="list-style:none;display:flex;align-items:center;gap:2px;">
+
+        <li class="nav-item">
+          <button class="nav-link" aria-haspopup="true">
+            Leistungen
+            <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="dropdown" role="menu">
+            <li><a href="#leistungen" role="menuitem">Design & Konzeption</a></li>
+            <li><a href="#leistungen" role="menuitem">Engineering</a></li>
+            <li><a href="#leistungen" role="menuitem">Planung & Ausschreibung</a></li>
+            <li><a href="#leistungen" role="menuitem">Projektlieferung</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a href="#leistungen" role="menuitem">Installation</a></li>
+            <li><a href="#leistungen" role="menuitem">Inbetriebnahme</a></li>
+            <li><a href="#leistungen" role="menuitem">Programmierung</a></li>
+            <li><a href="#leistungen" role="menuitem">Managed Service</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link" aria-haspopup="true">
+            Solutions
+            <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="dropdown" role="menu" style="min-width:250px;">
+            <li><a href="#solutions">Konferenz- & Meetingräume</a></li>
+            <li><a href="#solutions">Tagungsräume</a></li>
+            <li><a href="#solutions">Hörsäle</a></li>
+            <li><a href="#solutions">Auditorien</a></li>
+            <li><a href="#solutions">Klassenräume</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a href="#solutions">Kontrollräume</a></li>
+            <li><a href="#solutions">Gerichtssäle</a></li>
+            <li><a href="#solutions">Rathaussäle</a></li>
+            <li><a href="#solutions">Rezeptionen & Lobbys</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a href="#solutions">Showrooms</a></li>
+            <li><a href="#solutions">Museen & Erlebniszentren</a></li>
+            <li><a href="#solutions">Smarthome & Yacht</a></li>
+            <li><a href="#solutions">LED-Wände / Outdoor</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link" aria-haspopup="true">
+            Branchen
+            <svg class="chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <ul class="dropdown" role="menu">
+            <li><a href="#branchen">Banken & Finanzwesen</a></li>
+            <li><a href="#branchen">Versicherungen</a></li>
+            <li><a href="#branchen">Bildungseinrichtungen</a></li>
+            <li><a href="#branchen">Kultureinrichtungen</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a href="#branchen">Anwaltskanzleien</a></li>
+            <li><a href="#branchen">Automobil</a></li>
+            <li><a href="#branchen">Luftfahrt</a></li>
+            <li><a href="#branchen">Beratung & Consulting</a></li>
+            <div class="dropdown-divider"></div>
+            <li><a href="#branchen">Öffentliche Verwaltung</a></li>
+            <li><a href="#branchen">Gesundheitswesen</a></li>
+            <li><a href="#branchen">Hotellerie & Hospitality</a></li>
+            <li><a href="#branchen">Industrie & Fertigung</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="#ueber-uns" class="nav-link">Über uns</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#partner" class="nav-link">Partner & Hersteller</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- RIGHT SIDE -->
+    <div class="header-right">
+      <button class="lang-btn" onclick="toggleLanguage()" id="langBtn" title="Switch language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="langLabel">EN</span>
+      </button>
+      <button class="btn-nav-cta" onclick="openModal()">Beratung anfragen</button>
     </div>
-  </header>
 
-  <main>
-    <section id="hero" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-left">
-          <h1>Medientechnik, die Räume verbindet</h1>
-          <p>Gate Dynamics plant, installiert und programmiert Medientechnik & Konferenzräume — vom Konzept über die Implementierung bis zur Inbetriebnahme und Audio-Einmessung.</p>
-          <a class="btn primary" href="#kontakt">Kostenlose Erstberatung</a>
-          <a class="btn outline" href="#referenzen">Unsere Projekte</a>
+    <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-section">Leistungen</div>
+  <a href="#leistungen" onclick="closeMobileNav()">Design & Konzeption</a>
+  <a href="#leistungen" onclick="closeMobileNav()">Engineering</a>
+  <a href="#leistungen" onclick="closeMobileNav()">Planung & Ausschreibung</a>
+  <a href="#leistungen" onclick="closeMobileNav()">Installation & Inbetriebnahme</a>
+  <a href="#leistungen" onclick="closeMobileNav()">Programmierung</a>
+  <a href="#leistungen" onclick="closeMobileNav()">Managed Service</a>
+  <div class="mobile-section">Solutions</div>
+  <a href="#solutions" onclick="closeMobileNav()">Konferenz- & Meetingräume</a>
+  <a href="#solutions" onclick="closeMobileNav()">Hörsäle & Auditorien</a>
+  <a href="#solutions" onclick="closeMobileNav()">Klassenräume & Kontrollräume</a>
+  <a href="#solutions" onclick="closeMobileNav()">Showroom, Museum & Mehr</a>
+  <div class="mobile-section">Branchen</div>
+  <a href="#branchen" onclick="closeMobileNav()">Banken & Versicherungen</a>
+  <a href="#branchen" onclick="closeMobileNav()">Bildung & Kultur</a>
+  <a href="#branchen" onclick="closeMobileNav()">Öffentliche Verwaltung</a>
+  <a href="#branchen" onclick="closeMobileNav()">Industrie & Automotive</a>
+  <div class="mobile-section">Unternehmen</div>
+  <a href="#ueber-uns" onclick="closeMobileNav()">Über uns</a>
+  <a href="#partner" onclick="closeMobileNav()">Partner & Hersteller</a>
+  <a href="#" onclick="closeMobileNav();openModal();" style="color:var(--gold-dark);font-weight:700;padding-top:16px;border-bottom:none;">→ Beratung anfragen</a>
+</div>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge" data-de="Professionelle AV-Integration · Viersen" data-en="Professional AV Integration · Viersen">
+          Professionelle AV-Integration · Viersen
         </div>
-        <div class="hero-right">
-          <!-- Platzhalter-Bild: später ersetzen -->
-          <div class="hero-image" aria-hidden="true"></div>
+        <h1 data-de="AV-Technik, die <em>begeistert.</em> Räume, die funktionieren." data-en="AV Technology that <em>inspires.</em> Spaces that work.">
+          AV-Technik, die <em>begeistert.</em><br>Räume, die funktionieren.
+        </h1>
+        <p class="hero-lead" data-de="Gate Dynamics plant, engineert und installiert professionelle Medientechnik — von der ersten Skizze bis zur Programmierung. Für Unternehmen, Behörden und Bildungseinrichtungen, die auf Qualität nicht verzichten wollen." data-en="Gate Dynamics plans, engineers and installs professional AV technology — from initial concept to programming and commissioning. For organisations that refuse to compromise on quality.">
+          Gate Dynamics plant, engineert und installiert professionelle Medientechnik — von der ersten Skizze bis zur Programmierung. Für Unternehmen, Behörden und Bildungseinrichtungen, die auf Qualität nicht verzichten wollen.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="openModal()" data-de="Kostenloses Erstgespräch →" data-en="Free Consultation →">Kostenloses Erstgespräch →</button>
+          <a href="#solutions" class="btn-outline" data-de="Unsere Lösungen" data-en="Our Solutions">Unsere Lösungen</a>
         </div>
-      </div>
-    </section>
-
-    <section id="leistungen" class="section">
-      <div class="container">
-        <h2>Unsere Leistungen</h2>
-        <div class="grid">
-          <article>
-            <h3>Planung & Consulting</h3>
-            <p>Projekt- und gebäudeübergreifende Planung von Medientechnik, Lagepläne, Verkabelungs- und Rack-Layouts und technische Konzepte, die in der Praxis funktionieren.</p>
-          </article>
-          <article>
-            <h3>Installation & Inbetriebnahme</h3>
-            <p>Fachgerechte Montage und Verkabelung, Hardwareintegration, Systemtests und saubere Übergabe — termingerecht und dokumentiert.</p>
-          </article>
-          <article>
-            <h3>Programmierung & Automatisierung</h3>
-            <p>Steuerungslogik, Raumautomatisierung, Control-Systeme (z. B. Crestron/AMX/Extron) und kundenspezifische Tools für einfache Bedienbarkeit.</p>
-          </article>
-          <article>
-            <h3>Audio Engineering</h3>
-            <p>Messungen, Einmessen, DSP-Tuning und akustische Beratung — damit Sprache und Musik überall klar und verständlich ankommen.</p>
-          </article>
-          <article>
-            <h3>Verkauf & Support</h3>
-            <p>Beschaffung hochwertiger Hardware, langfristiger Support und Ersatzteile — wir liefern, konfigurieren und betreuen.</p>
-          </article>
-          <article>
-            <h3>Zukunft: KI-Anleitungen & Webshop</h3>
-            <p>Bald verfügbar: Webshop mit KI-generierten Bedienungsanleitungen und Support-Tools für AV-Techniker und Endkunden.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="referenzen" class="section alt">
-      <div class="container">
-        <h2>Referenzen & Projekte</h2>
-        <p>Wir arbeiten für Unternehmen, Bildungseinrichtungen und Behörden. Beispielprojekte: Konferenzräume, Hörsäle, hybride Meetinglösungen und Beschallungssysteme. Auf Anfrage stellen wir detaillierte Case-Studies zur Verfügung.</p>
-      </div>
-    </section>
-
-    <section id="kontakt" class="section">
-      <div class="container contact-grid">
-        <div>
-          <h2>Kontakt</h2>
-          <p>Gate Dynamics<br>Westring 79<br>41749 Viersen-Süchteln</p>
-          <p>Email: <a href="mailto:m.fleckenstein@gate-dynamics.de">m.fleckenstein@gate-dynamics.de</a><br>Telefon: +49 (0) 123 456789</p>
-          <p>Für Projektanfragen: Beschreibe kurz das Projekt, Raumgröße, gewünschte Funktionen und Budgetrahmen — wir melden uns mit einem Vorschlag.</p>
-          <p><strong>Öffnungszeiten:</strong> Mo–Fr 08:00–18:00</p>
-        </div>
-
-        <div>
-          <h3>Kontaktformular</h3>
-          <!-- Empfohlen: Google Form einbetten (unten Anleitung). Alternativ einfach mailto -->
-          <form action="mailto:m.fleckenstein@gate-dynamics.de" method="post" enctype="text/plain">
-            <label for="name">Name</label>
-            <input id="name" name="Name" required>
-            <label for="email">E-Mail</label>
-            <input id="email" name="E-Mail" type="email" required>
-            <label for="msg">Kurzbeschreibung</label>
-            <textarea id="msg" name="Nachricht" rows="5" required></textarea>
-            <button class="btn primary" type="submit">Nachricht senden</button>
-          </form>
-          <p class="muted">Hinweis: Mailto-Form öffnet das lokale E-Mail-Programm. Für bessere UX: Google Form nutzen (Anleitung unten).</p>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-de="Gesamtprojekt aus einer Hand" data-en="Full project from a single source">Gesamtprojekt aus einer Hand</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-de="Zertifizierte Hersteller-Partner" data-en="Certified manufacturer partners">Zertifizierte Hersteller-Partner</span>
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-de="DSGVO-konforme Lösungen" data-en="GDPR-compliant solutions">DSGVO-konforme Lösungen</span>
+          </div>
         </div>
       </div>
-    </section>
+      <div class="hero-img-wrap">
+        <!--
+          HERO-BILD: Lade "hero.jpg" hoch und ersetze durch:
+          <img src="hero.jpg" alt="Gate Dynamics — professioneller Konferenzraum" class="hero-img">
+        -->
+        <div class="hero-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>hero.jpg einfügen</span>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <strong data-de="Managed Service" data-en="Managed Service">Managed Service</strong>
+            <span data-de="Proaktiver Support & Fernwartung" data-en="Proactive support & remote maintenance">Proaktiver Support & Fernwartung</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="section small">
-      <div class="container">
-        <h4>Warum Gate Dynamics?</h4>
+<!-- ===== WIE WIR ARBEITEN (PROZESS) ===== -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head centered">
+      <span class="section-label" data-de="Unser Prozess" data-en="Our Process">Unser Prozess</span>
+      <h2 class="section-title" data-de="Von der Idee zur fertigen Installation" data-en="From Concept to Completed Installation">Von der Idee zur fertigen Installation</h2>
+      <p class="section-sub" data-de="Wir begleiten jedes Projekt vollständig — strukturiert, transparent und termingenau." data-en="We manage every project end-to-end — structured, transparent and on schedule.">
+        Wir begleiten jedes Projekt vollständig — strukturiert, transparent und termingenau.
+      </p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3 data-de="Analyse & Konzept" data-en="Analysis & Concept">Analyse & Konzept</h3>
+        <p data-de="IST-Zustand ermitteln, SOLL-Zustand definieren, Raumakustik bewerten, Ausschreibungsunterlagen erstellen." data-en="Assess the current state, define target state, evaluate room acoustics, prepare tender documents.">IST-Zustand ermitteln, SOLL-Zustand definieren, Raumakustik bewerten, Ausschreibungsunterlagen erstellen.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3 data-de="Engineering & Planung" data-en="Engineering & Planning">Engineering & Planung</h3>
+        <p data-de="Blockschaltbilder, Rack-Layouts, Kabelzuglisten, IP-Listen, Pflichtenhefte und Schnittstellenkoordination." data-en="Signal flow diagrams, rack layouts, cable schedules, IP lists, specifications and interface coordination.">Blockschaltbilder, Rack-Layouts, Kabelzuglisten, IP-Listen, Pflichtenhefte und Schnittstellenkoordination.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3 data-de="Beschaffung & Vorbereitung" data-en="Procurement & Preparation">Beschaffung & Vorbereitung</h3>
+        <p data-de="Einkauf bei zertifizierten Lieferanten, DOA-Prüfung, Vorabtest aller Komponenten im eigenen Haus." data-en="Procurement from certified suppliers, DOA check, pre-testing of all components in-house.">Einkauf bei zertifizierten Lieferanten, DOA-Prüfung, Vorabtest aller Komponenten im eigenen Haus.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3 data-de="Installation & Inbetriebnahme" data-en="Installation & Commissioning">Installation & Inbetriebnahme</h3>
+        <p data-de="Professionelles Kabelmanagement, jedes Kabel beschriftet, DSP-Einmessung, Programmierung, Abnahme." data-en="Professional cable management, every cable labelled, DSP calibration, programming, handover.">Professionelles Kabelmanagement, jedes Kabel beschriftet, DSP-Einmessung, Programmierung, Abnahme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEISTUNGEN ===== -->
+<section id="leistungen" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label" data-de="Was wir leisten" data-en="What we deliver">Was wir leisten</span>
+      <h2 class="section-title" data-de="Unsere Leistungen" data-en="Our Services">Unsere Leistungen</h2>
+      <p class="section-sub" data-de="Vollständige AV-Kompetenz unter einem Dach — von der Ausschreibung bis zum laufenden Betrieb." data-en="Complete AV expertise under one roof — from tender to ongoing operations.">Vollständige AV-Kompetenz unter einem Dach — von der Ausschreibung bis zum laufenden Betrieb.</p>
+    </div>
+    <div class="services-grid">
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3 data-de="Design & Konzeption" data-en="Design & Concept">Design & Konzeption</h3>
+        <p data-de="Wir ermitteln Ihren IST-Zustand, definieren den SOLL-Zustand und erstellen maßgeschneiderte AV-Konzepte und Ausschreibungsunterlagen." data-en="We assess your current state, define target requirements and produce bespoke AV concepts and tender documents.">Wir ermitteln Ihren IST-Zustand, definieren den SOLL-Zustand und erstellen maßgeschneiderte AV-Konzepte und Ausschreibungsunterlagen.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+        <h3 data-de="Engineering" data-en="Engineering">Engineering</h3>
+        <p data-de="Blockschaltbilder, mechanische Zeichnungen, Front-Elevation, Rack-Layouts, IP-Adresspläne und vollständige technische Dokumentation." data-en="Signal flow diagrams, mechanical drawings, front elevations, rack layouts, IP address plans and complete technical documentation.">Blockschaltbilder, mechanische Zeichnungen, Front-Elevation, Rack-Layouts, IP-Adresspläne und vollständige technische Dokumentation.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3 data-de="Planung & Ausschreibung" data-en="Planning & Tendering">Planung & Ausschreibung</h3>
+        <p data-de="Projektpläne, Kabelzuglisten, Pflichtenhefte und DSGVO-konforme Ausschreibungsdokumente für öffentliche Vergabeverfahren." data-en="Project plans, cable schedules, specifications and GDPR-compliant tender documents for public procurement procedures.">Projektpläne, Kabelzuglisten, Pflichtenhefte und Ausschreibungsdokumente für öffentliche Vergabeverfahren.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3 data-de="Projektlieferung" data-en="Project Delivery">Projektlieferung</h3>
+        <p data-de="Vollständiges Projektmanagement: Terminkoordination, Materiallogistik, Schnittstellenabstimmung und lückenlose Dokumentation bis zur Übergabe." data-en="Complete project management: scheduling, logistics, interface coordination and full documentation through to handover.">Vollständiges Projektmanagement: Terminkoordination, Materiallogistik, Schnittstellenabstimmung und lückenlose Dokumentation bis zur Übergabe.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 data-de="Installation" data-en="Installation">Installation</h3>
+        <p data-de="Fachgerechte Montage auf höchstem Niveau: sauberes Kabelmanagement, jedes Kabel beschriftet, nach Herstellervorgaben und DIN-Normen." data-en="Expert installation to the highest standard: clean cable management, every cable labelled, to manufacturer specifications and DIN standards.">Fachgerechte Montage auf höchstem Niveau: sauberes Kabelmanagement, jedes Kabel beschriftet, nach Herstellervorgaben und DIN-Normen.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3 data-de="Inbetriebnahme" data-en="Commissioning">Inbetriebnahme</h3>
+        <p data-de="Systemtests, DSP-Einmessung, akustische Feinabstimmung, Nutzerschulungen und strukturierte Abnahme mit dem Kunden." data-en="System testing, DSP calibration, acoustic fine-tuning, user training and structured customer sign-off.">Systemtests, DSP-Einmessung, akustische Feinabstimmung, Nutzerschulungen und strukturierte Abnahme mit dem Kunden.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3 data-de="Programmierung" data-en="Programming">Programmierung</h3>
+        <p data-de="Steuerungslogik und individuelle Benutzeroberflächen für Crestron, Extron, QSC und weitere Plattformen — intuitiv bedienbar für jeden Nutzer." data-en="Control logic and custom user interfaces for Crestron, Extron, QSC and other platforms — intuitively operable by any user.">Steuerungslogik und individuelle Benutzeroberflächen für Crestron, Extron, QSC und weitere Plattformen — intuitiv bedienbar für jeden Nutzer.</p>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+        <h3 data-de="Managed Service" data-en="Managed Service">Managed Service</h3>
+        <p data-de="Proaktives Monitoring, Fernwartung, SLA-basierter Support, Wartungsintervalle und Ersatzteilmanagement für maximale Systemverfügbarkeit." data-en="Proactive monitoring, remote maintenance, SLA-based support, scheduled maintenance and spare parts management for maximum system availability.">Proaktives Monitoring, Fernwartung, SLA-basierter Support, Wartungsintervalle und Ersatzteilmanagement für maximale Systemverfügbarkeit.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTIONS ===== -->
+<section id="solutions" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label" data-de="Anwendungsbereiche" data-en="Application Areas">Anwendungsbereiche</span>
+      <h2 class="section-title" data-de="Solutions für jeden Raum" data-en="Solutions for Every Space">Solutions für jeden Raum</h2>
+      <p class="section-sub" data-de="AV-Technik ist nicht gleich AV-Technik. Jeder Raum hat seine eigenen Anforderungen — wir kennen sie alle." data-en="AV technology is not one-size-fits-all. Every space has its own requirements — we know them all.">AV-Technik ist nicht gleich AV-Technik. Jeder Raum hat seine eigenen Anforderungen — wir kennen sie alle.</p>
+    </div>
+    <div class="solutions-grid">
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Konferenzraum</div>
+        <div class="sol-body">
+          <div class="sol-tag">Meeting & Collaboration</div>
+          <h3 data-de="Konferenz- & Meetingräume" data-en="Conference & Meeting Rooms">Konferenz- & Meetingräume</h3>
+          <p data-de="Hybridfähige Räume mit Kamera, Mikrofon, Display und Teams / Zoom / Webex Integration." data-en="Hybrid-ready rooms with camera, microphone, display and Teams / Zoom / Webex integration.">Hybridfähige Räume mit Kamera, Mikrofon, Display und Teams / Zoom / Webex Integration.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Tagungsraum</div>
+        <div class="sol-body">
+          <div class="sol-tag">Veranstaltung</div>
+          <h3 data-de="Tagungsräume" data-en="Conference Halls">Tagungsräume</h3>
+          <p data-de="Flexible Beschallung, Präsentationstechnik und Raumsteuerung für Veranstaltungen jeder Größe." data-en="Flexible PA systems, presentation technology and room control for events of any size.">Flexible Beschallung, Präsentationstechnik und Raumsteuerung für Veranstaltungen jeder Größe.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Hörsaal</div>
+        <div class="sol-body">
+          <div class="sol-tag">Bildung</div>
+          <h3 data-de="Hörsäle" data-en="Lecture Halls">Hörsäle</h3>
+          <p data-de="Großflächige Projektion, verteilte Beschallung und Mikrofontechnik für klare Sprachverständlichkeit bis in die letzte Reihe." data-en="Large-format projection, distributed PA and microphone systems for clear speech intelligibility to the back row.">Großflächige Projektion, verteilte Beschallung und Mikrofontechnik für klare Sprachverständlichkeit bis in die letzte Reihe.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Auditorium</div>
+        <div class="sol-body">
+          <div class="sol-tag">Bildung & Kultur</div>
+          <h3 data-de="Auditorien" data-en="Auditoriums">Auditorien</h3>
+          <p data-de="Line-Array-Systeme, Bühnenbeleuchtung, Streaming und Aufzeichnung für professionelle Bühnen- und Kulturveranstaltungen." data-en="Line array systems, stage lighting, streaming and recording for professional stage and cultural events.">Line-Array-Systeme, Bühnenbeleuchtung, Streaming und Aufzeichnung für professionelle Kulturveranstaltungen.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Klassenzimmer</div>
+        <div class="sol-body">
+          <div class="sol-tag">Bildung</div>
+          <h3 data-de="Klassenräume" data-en="Classrooms">Klassenräume</h3>
+          <p data-de="Interaktive Displays, BYOD-Integration und einfache Bedienung für Lehrer und Schüler — zukunftssicher und wartungsarm." data-en="Interactive displays, BYOD integration and simple operation for teachers and students — future-proof and low-maintenance.">Interaktive Displays, BYOD-Integration und einfache Bedienung für Lehrer und Schüler — zukunftssicher und wartungsarm.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Kontrollraum</div>
+        <div class="sol-body">
+          <div class="sol-tag">Mission Critical</div>
+          <h3 data-de="Kontrollräume" data-en="Control Rooms">Kontrollräume</h3>
+          <p data-de="Hochverfügbare Videowände, redundante Signalwege und Leitstandintegration für kritische Betriebsumgebungen." data-en="High-availability video walls, redundant signal paths and control room integration for critical operational environments.">Hochverfügbare Videowände, redundante Signalwege und Leitstandintegration für kritische Betriebsumgebungen.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Gerichtssaal</div>
+        <div class="sol-body">
+          <div class="sol-tag">Öffentlich</div>
+          <h3 data-de="Gerichtssäle" data-en="Courtrooms">Gerichtssäle</h3>
+          <p data-de="Diskrete Beschallungssysteme, Dolmetscher-Anlagen, Videokonferenz für Zugeschaltete und rechtssichere Aufzeichnung." data-en="Discreet PA systems, interpreter consoles, videoconferencing for remote participants and legally compliant recording.">Diskrete Beschallungssysteme, Dolmetscher-Anlagen und rechtssichere Aufzeichnungstechnik.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Rathaussaal</div>
+        <div class="sol-body">
+          <div class="sol-tag">Öffentlich</div>
+          <h3 data-de="Rathaussäle" data-en="Council Chambers">Rathaussäle</h3>
+          <p data-de="Konferenzanlagen mit Abstimmungssystem, Livestreaming, Dolmetscher-Infrastruktur und barrierefreier Bedienung." data-en="Conference systems with voting, live streaming, interpreter infrastructure and accessible operation.">Konferenzanlagen mit Abstimmungssystem, Livestreaming und Dolmetscher-Infrastruktur.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Rezeption</div>
+        <div class="sol-body">
+          <div class="sol-tag">Corporate</div>
+          <h3 data-de="Rezeptionen & Lobbys" data-en="Receptions & Lobbies">Rezeptionen & Lobbys</h3>
+          <p data-de="Digital Signage, Raumplanungsdisplays und Hintergrundmusik — der erste Eindruck zählt." data-en="Digital signage, room booking displays and background music — first impressions count.">Digital Signage, Raumplanungsdisplays und Hintergrundmusik — der erste Eindruck zählt.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Showroom</div>
+        <div class="sol-body">
+          <div class="sol-tag">Erlebnis</div>
+          <h3 data-de="Showrooms" data-en="Showrooms">Showrooms</h3>
+          <p data-de="Beeindruckende Präsentationstechnik, LED-Wände und immersive Audio-Umgebungen, die Produkte erlebbar machen." data-en="Impressive presentation technology, LED walls and immersive audio environments that bring products to life.">Beeindruckende Präsentationstechnik, LED-Wände und immersive Audio-Umgebungen, die Produkte erlebbar machen.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Museum</div>
+        <div class="sol-body">
+          <div class="sol-tag">Kultur & Erlebnis</div>
+          <h3 data-de="Museen & Erlebniszentren" data-en="Museums & Experience Centres">Museen & Erlebniszentren</h3>
+          <p data-de="Multimediale Installationen, interaktive Exponate und immersive Audio-/Video-Umgebungen für unvergessliche Besuche." data-en="Multimedia installations, interactive exhibits and immersive audio/video environments for unforgettable visits.">Multimediale Installationen, interaktive Exponate und immersive Audio-/Video-Umgebungen.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: Smarthome / Yacht</div>
+        <div class="sol-body">
+          <div class="sol-tag">Premium & Residential</div>
+          <h3 data-de="Smarthome, Yachten & Kreuzfahrtschiffe" data-en="Smarthome, Yachts & Cruise Ships">Smarthome, Yachten & Kreuzfahrtschiffe</h3>
+          <p data-de="Hochwertige AV-Systeme für private und maritime Umgebungen — diskret, zuverlässig und premium verarbeitet." data-en="Premium AV systems for residential and maritime environments — discreet, reliable and impeccably finished.">Hochwertige AV-Systeme für private und maritime Umgebungen — diskret, zuverlässig und premium verarbeitet.</p>
+        </div>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-img">Bild: LED-Wand</div>
+        <div class="sol-body">
+          <div class="sol-tag">Display-Technik</div>
+          <h3 data-de="LED-Wände & Outdoor LED" data-en="LED Walls & Outdoor LED">LED-Wände & Outdoor LED</h3>
+          <p data-de="Indoor- und Outdoor-LED-Wände mit pixelgenauer Kalibrierung — von der Planung über die Montage bis zur Wartung." data-en="Indoor and outdoor LED walls with pixel-accurate calibration — from planning and installation through to maintenance.">Indoor- und Outdoor-LED-Wände mit pixelgenauer Kalibrierung — von der Planung bis zur Wartung.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRANCHEN ===== -->
+<section id="branchen" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label" data-de="Unsere Märkte" data-en="Our Markets">Unsere Märkte</span>
+      <h2 class="section-title" data-de="Branchen, die wir kennen" data-en="Industries We Know">Branchen, die wir kennen</h2>
+      <p class="section-sub" data-de="Wir verstehen die spezifischen Anforderungen jeder Branche und liefern Lösungen, die wirklich passen." data-en="We understand the specific requirements of every sector and deliver solutions that truly fit.">Wir verstehen die spezifischen Anforderungen jeder Branche und liefern Lösungen, die wirklich passen.</p>
+    </div>
+    <div class="industries-grid">
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 data-de="Banken & Finanzwesen" data-en="Banking & Finance">Banken & Finanzwesen</h3>
+        <p data-de="Sichere, diskrete AV-Infrastruktur für Konferenzräume, Schalterhallen und Handelsräume." data-en="Secure, discreet AV infrastructure for boardrooms, banking halls and trading floors.">Sichere, diskrete AV-Infrastruktur für Konferenzräume, Schalterhallen und Handelsräume.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 data-de="Versicherungen" data-en="Insurance">Versicherungen</h3>
+        <p data-de="Hybride Meetinglösungen, digitale Beschilderung und zentral verwaltete AV-Systeme für Filialnetzwerke." data-en="Hybrid meeting solutions, digital signage and centrally managed AV systems for branch networks.">Hybride Meetinglösungen, digitale Beschilderung und zentral verwaltete AV-Systeme für Filialnetzwerke.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <h3 data-de="Bildungseinrichtungen" data-en="Education">Bildungseinrichtungen</h3>
+        <p data-de="Interaktive Klassenzimmer, Hörsäle und Campus-weite AV-Infrastruktur für Schulen und Universitäten." data-en="Interactive classrooms, lecture halls and campus-wide AV infrastructure for schools and universities.">Interaktive Klassenzimmer, Hörsäle und Campus-weite AV-Infrastruktur für Schulen und Universitäten.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h3 data-de="Kultureinrichtungen" data-en="Cultural Venues">Kultureinrichtungen</h3>
+        <p data-de="Theater, Museen, Galerien: immersive Klang- und Bildwelten, die Besucher berühren und begeistern." data-en="Theatres, museums, galleries: immersive sound and visual experiences that move and inspire visitors.">Theater, Museen, Galerien: immersive Klang- und Bildwelten, die Besucher berühren und begeistern.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M3 21l1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg></div>
+        <h3 data-de="Anwaltskanzleien" data-en="Law Firms">Anwaltskanzleien</h3>
+        <p data-de="Diskrete Konferenztechnik, sichere Videoverbindungen und DSGVO-konforme Aufzeichnungslösungen." data-en="Discreet conferencing technology, secure video connections and GDPR-compliant recording solutions.">Diskrete Konferenztechnik, sichere Videoverbindungen und DSGVO-konforme Aufzeichnungslösungen.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+        <h3 data-de="Automobil" data-en="Automotive">Automobil</h3>
+        <p data-de="Showroom-Präsentationstechnik, Schulungsräume und LED-Wände für Automobilhändler und Hersteller." data-en="Showroom presentation technology, training rooms and LED walls for dealerships and manufacturers.">Showroom-Präsentationstechnik, Schulungsräume und LED-Wände für Automobilhändler und Hersteller.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 9.8 19.79 19.79 0 0 1 1.61 1.18 2 2 0 0 1 3.6.02h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 7.91a16 16 0 0 0 6.06 6.06l1.15-1.15a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.93 15"/></svg></div>
+        <h3 data-de="Luftfahrt" data-en="Aviation">Luftfahrt</h3>
+        <p data-de="Zuverlässige AV-Systeme für Briefing-Räume, Simulationszentren und Terminalbeschilderung." data-en="Reliable AV systems for briefing rooms, simulation centres and terminal signage.">Zuverlässige AV-Systeme für Briefing-Räume, Simulationszentren und Terminalbeschilderung.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3 data-de="Beratung & Consulting" data-en="Consulting">Beratung & Consulting</h3>
+        <p data-de="Premium Konferenzräume und flexible Meetinglösungen für Strategieberatungen, die Kunden beeindrucken wollen." data-en="Premium conference rooms and flexible meeting solutions for consulting firms that want to impress clients.">Premium Konferenzräume und flexible Meetinglösungen für Strategieberatungen, die Kunden beeindrucken wollen.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3 data-de="Öffentliche Verwaltung" data-en="Public Sector">Öffentliche Verwaltung</h3>
+        <p data-de="Rathaus- und Behördensäle, Videokonferenz, barrierefreie Bedienung und Ausschreibungsunterstützung." data-en="Council chambers and government rooms, video conferencing, accessible operation and tendering support.">Rathaus- und Behördensäle, Videokonferenz, barrierefreie Bedienung und Ausschreibungsunterstützung.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3 data-de="Gesundheitswesen" data-en="Healthcare">Gesundheitswesen</h3>
+        <p data-de="Hygienefreundliche Lösungen für Konferenzräume, OP-Dokumentation und Patienteninformationssysteme." data-en="Hygiene-friendly solutions for conference rooms, surgical documentation and patient information systems.">Hygienefreundliche Lösungen für Konferenzräume, OP-Dokumentation und Patienteninformationssysteme.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <h3 data-de="Hotellerie & Hospitality" data-en="Hospitality">Hotellerie & Hospitality</h3>
+        <p data-de="Bankettsäle, Lobby-Beschallung, Konferenzflächen und Wellnessbereiche mit nahtloser AV-Integration." data-en="Banquet halls, lobby PA, conference spaces and wellness areas with seamless AV integration.">Bankettsäle, Lobby-Beschallung, Konferenzflächen und Wellnessbereiche mit nahtloser AV-Integration.</p>
+      </div>
+
+      <div class="ind-card">
+        <div class="ind-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3 data-de="Industrie & Fertigung" data-en="Industry & Manufacturing">Industrie & Fertigung</h3>
+        <p data-de="Leitstand-Integration, Werksbeschilderung, Schulungsräume und robuste AV-Systeme für industrielle Umgebungen." data-en="Control room integration, factory signage, training rooms and robust AV systems for industrial environments.">Leitstand-Integration, Werksbeschilderung, Schulungsräume und robuste AV-Systeme für industrielle Umgebungen.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÜBER UNS ===== -->
+<section id="ueber-uns" class="section section-alt">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <!--
+          TEAM-BILD: Lade "team.jpg" hoch und ersetze durch:
+          <img src="team.jpg" alt="Gate Dynamics Team" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;">
+        -->
+        <div class="about-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>team.jpg einfügen</span>
+        </div>
+      </div>
+      <div>
+        <span class="section-label" data-de="Wer wir sind" data-en="Who We Are">Wer wir sind</span>
+        <h2 class="section-title" data-de="Über Gate Dynamics" data-en="About Gate Dynamics">Über Gate Dynamics</h2>
+        <div class="about-text">
+          <p data-de="Gate Dynamics ist ein spezialisiertes AV-Unternehmen mit Sitz in Viersen-Süchteln. Wir stehen für technische Exzellenz, saubere Handwerkskunst und echte Partnerschaft mit unseren Kunden — von der ersten Beratung bis zum laufenden Betrieb." data-en="Gate Dynamics is a specialist AV company based in Viersen-Süchteln. We stand for technical excellence, clean craftsmanship and genuine partnership with our clients — from initial consultation through to ongoing operations.">
+            Gate Dynamics ist ein spezialisiertes AV-Unternehmen mit Sitz in Viersen-Süchteln. Wir stehen für technische Exzellenz, saubere Handwerkskunst und echte Partnerschaft mit unseren Kunden — von der ersten Beratung bis zum laufenden Betrieb.
+          </p>
+          <p data-de="Unser Anspruch: Jedes Projekt wird so ausgeführt, als wäre es unser eigenes. Das bedeutet durchdachte Planung, lückenlose Dokumentation und eine Installation, bei der jedes Kabel sitzt." data-en="Our standard: every project is executed as if it were our own. That means thorough planning, complete documentation and an installation where every cable is exactly right.">
+            <!--
+              EIGENER TEXT:
+              Ersetzt diesen Absatz mit eurem Unternehmenstext, sobald er fertig ist.
+            -->
+            Unser Anspruch: Jedes Projekt wird so ausgeführt, als wäre es unser eigenes. Das bedeutet durchdachte Planung, lückenlose Dokumentation und eine Installation, bei der jedes Kabel sitzt.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-num">1</div>
+            <div class="tl-content">
+              <h4 data-de="Technische Tiefe" data-en="Technical depth">Technische Tiefe</h4>
+              <p data-de="Von der Projektierung bis zur DSP-Einmessung — wir beherrschen die gesamte Wertschöpfungskette der AV-Technik." data-en="From project engineering to DSP calibration — we command the entire AV value chain.">Von der Projektierung bis zur DSP-Einmessung — wir beherrschen die gesamte Wertschöpfungskette der AV-Technik.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">2</div>
+            <div class="tl-content">
+              <h4 data-de="Zertifizierte Partner" data-en="Certified partners">Zertifizierte Partner</h4>
+              <p data-de="Wir arbeiten ausschließlich mit zertifizierten Herstellern und Lieferanten zusammen — für geprüfte Qualität und verlässliche Garantie." data-en="We work exclusively with certified manufacturers and suppliers — for verified quality and reliable warranties.">Wir arbeiten ausschließlich mit zertifizierten Herstellern und Lieferanten zusammen — für geprüfte Qualität und verlässliche Garantie.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-num">3</div>
+            <div class="tl-content">
+              <h4 data-de="Gesamtprojekt aus einer Hand" data-en="One-stop project delivery">Gesamtprojekt aus einer Hand</h4>
+              <p data-de="Kein Zuständigkeitsdschungel: Planung, Engineering, Beschaffung, Installation und Betrieb kommen von einem Ansprechpartner." data-en="No responsibility gaps: planning, engineering, procurement, installation and operations all from one point of contact.">Kein Zuständigkeitsdschungel: Planung, Engineering, Beschaffung, Installation und Betrieb kommen von einem Ansprechpartner.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER & HERSTELLER ===== -->
+<section id="partner" class="section">
+  <div class="container">
+    <div class="section-head centered">
+      <span class="section-label" data-de="Unsere Partner" data-en="Our Partners">Unsere Partner</span>
+      <h2 class="section-title" data-de="Partner & Hersteller" data-en="Partners & Manufacturers">Partner & Hersteller</h2>
+      <p class="section-sub" data-de="Wir setzen auf führende Hersteller der AV-Branche — für Lösungen, die halten, was sie versprechen." data-en="We rely on leading AV manufacturers — for solutions that deliver on their promise.">Wir setzen auf führende Hersteller der AV-Branche — für Lösungen, die halten, was sie versprechen.</p>
+    </div>
+    <div class="partner-grid">
+      <!--
+        LOGO EINFÜGEN:
+        1. Erstelle Ordner "img/partner/" in GitHub
+        2. Lade alle Herstellerlogos dort hoch (PNG oder SVG, möglichst weißer/transparenter Hintergrund)
+        3. Ersetze jeden Platzhalter-Block z. B. so:
+           <div class="partner-logo">
+             <img src="img/partner/crestron.png" alt="Crestron">
+           </div>
+      -->
+      <div class="partner-logo"><span class="partner-logo-text">Crestron</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Extron</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">QSC</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Biamp</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Shure</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Sennheiser</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Yamaha UCC</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Panasonic</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Sony</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">LG</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Samsung</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Barco</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Unilumin</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Lightware</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Purelink</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Chief</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Hagor</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Wolfvision</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Fohhn</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">LB-Audio</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Bose Professional</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Holzmedia</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">AVER</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Icron</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Evoko</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Humly</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Yealink</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Maxhub</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Neat</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Poly</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Microsoft</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Apple</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Fröscher</span></div>
+      <div class="partner-logo"><span class="partner-logo-text">Heckler Design</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 data-de="Bereit für Ihr nächstes AV-Projekt?" data-en="Ready for your next AV project?">Bereit für Ihr nächstes AV-Projekt?</h2>
+        <p data-de="Sprechen Sie uns an — kostenlos, unverbindlich, mit echten Lösungsvorschlägen." data-en="Get in touch — free, no obligation, with real solution proposals.">Sprechen Sie uns an — kostenlos, unverbindlich, mit echten Lösungsvorschlägen.</p>
+      </div>
+      <button class="btn-white" onclick="openModal()" data-de="Jetzt Beratung anfragen →" data-en="Request consultation →">Jetzt Beratung anfragen →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPRESSUM ===== -->
+<section id="impressum" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Rechtliches</span>
+      <h2 class="section-title" data-de="Impressum & Datenschutz" data-en="Legal Notice & Privacy">Impressum & Datenschutz</h2>
+    </div>
+    <div class="impressum-grid">
+      <div class="impressum-block">
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>
+          Gate Dynamics<br>
+          Westring 79<br>
+          41749 Viersen-Süchteln<br>
+          Deutschland
+        </p>
+        <br>
+        <h3>Vertreten durch</h3>
+        <p>Arne Busch</p>
+      </div>
+      <div class="impressum-block">
+        <h3>Kontakt</h3>
+        <p>
+          Telefon: <a href="tel:+491759001140">+49 175 9001140</a><br>
+          E-Mail: <a href="mailto:a.busch@gate-dynamics.de">a.busch@gate-dynamics.de</a>
+        </p>
+        <br>
+        <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+        <p>Arne Busch<br>Westring 79, 41749 Viersen-Süchteln</p>
+      </div>
+      <div class="impressum-block">
+        <h3>Datenschutzerklärung</h3>
+        <p>Diese Website verwendet Google Analytics zur Analyse des Nutzerverhaltens. Dabei werden Daten an Google LLC, USA übermittelt. Sie können der Datenerhebung durch Ablehnen der Cookies widersprechen. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</p>
+        <br>
+        <h3>Haftungsausschluss</h3>
+        <p>Die Inhalte wurden mit größter Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität übernehmen wir keine Gewähr (§ 7 Abs. 1 TMG).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-block">
+          <span class="logo-main">Gate</span>
+          <span class="logo-sub">Dynamics</span>
+        </div>
+        <p>Professionelle AV-Technik aus Viersen. Planung, Engineering, Installation und Managed Service.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-de="Leistungen" data-en="Services">Leistungen</h4>
         <ul>
-          <li>Praxisorientierte Planung mit Blick auf Betrieb & Wartung</li>
-          <li>Messbare Audio-Qualität durch professionelles Einmessen</li>
-          <li>Skalierbare Lösungen — von Startups bis Konzernen</li>
+          <li><a href="#leistungen" data-de="Design & Konzeption" data-en="Design & Concept">Design & Konzeption</a></li>
+          <li><a href="#leistungen" data-de="Engineering" data-en="Engineering">Engineering</a></li>
+          <li><a href="#leistungen" data-de="Planung & Ausschreibung" data-en="Planning & Tendering">Planung & Ausschreibung</a></li>
+          <li><a href="#leistungen" data-de="Installation" data-en="Installation">Installation</a></li>
+          <li><a href="#leistungen" data-de="Programmierung" data-en="Programming">Programmierung</a></li>
+          <li><a href="#leistungen" data-de="Managed Service" data-en="Managed Service">Managed Service</a></li>
         </ul>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>© <span id="year"></span> Gate Dynamics</div>
-      <div class="muted">Westring 79, 41749 Viersen-Süchteln • m.fleckenstein@gate-dynamics.de</div>
+      <div class="footer-col">
+        <h4 data-de="Unternehmen" data-en="Company">Unternehmen</h4>
+        <ul>
+          <li><a href="#ueber-uns" data-de="Über uns" data-en="About us">Über uns</a></li>
+          <li><a href="#partner" data-de="Partner & Hersteller" data-en="Partners">Partner & Hersteller</a></li>
+          <li><a href="#branchen" data-de="Branchen" data-en="Industries">Branchen</a></li>
+          <li><a href="#impressum" data-de="Impressum" data-en="Legal Notice">Impressum</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-de="Kontakt" data-en="Contact">Kontakt</h4>
+        <ul>
+          <li><a href="mailto:a.busch@gate-dynamics.de">a.busch@gate-dynamics.de</a></li>
+          <li><a href="tel:+491759001140">+49 175 9001140</a></li>
+          <li><a href="#" data-de="Westring 79, Viersen" data-en="Westring 79, Viersen">Westring 79, Viersen-Süchteln</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Gate Dynamics · Arne Busch · Viersen-Süchteln</span>
+      <div style="display:flex;gap:16px;">
+        <a href="#impressum" data-de="Impressum" data-en="Legal Notice">Impressum</a>
+        <a href="#impressum" data-de="Datenschutz" data-en="Privacy Policy">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeModal()" aria-label="Schließen">✕</button>
+
+    <div id="formContent">
+      <h2 id="modalTitle" data-de="Kostenloses Erstgespräch" data-en="Free Consultation">Kostenloses Erstgespräch</h2>
+      <p class="modal-sub" data-de="Beschreiben Sie kurz Ihr Projekt — Arne Busch meldet sich persönlich innerhalb von 24 Stunden." data-en="Briefly describe your project — Arne Busch will personally respond within 24 hours.">Beschreiben Sie kurz Ihr Projekt — Arne Busch meldet sich persönlich innerhalb von 24 Stunden.</p>
+
+      <div class="form-error" id="formError">
+        Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie direkt an <a href="mailto:a.busch@gate-dynamics.de">a.busch@gate-dynamics.de</a>.
+      </div>
+
+      <!--
+        FORMSPREE EINRICHTEN (kostenlos, bis 50 Nachrichten/Monat):
+        1. Gehe zu formspree.io → Account erstellen
+        2. New Form → Name eingeben → Form-ID kopieren
+        3. Ersetze "YOUR_FORMSPREE_ID" unten durch deine ID (z.B. xrgvwkpq)
+        Das war's. Alle Anfragen landen direkt per E-Mail bei a.busch@gate-dynamics.de
+      -->
+      <form id="beratungsForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vorname" data-de="Vorname *" data-en="First Name *">Vorname *</label>
+            <input type="text" id="vorname" name="Vorname" required>
+          </div>
+          <div class="form-group">
+            <label for="nachname" data-de="Nachname *" data-en="Last Name *">Nachname *</label>
+            <input type="text" id="nachname" name="Nachname" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firma" data-de="Firma / Organisation" data-en="Company / Organisation">Firma / Organisation</label>
+          <input type="text" id="firma" name="Firma">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email" data-de="E-Mail *" data-en="Email *">E-Mail *</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="telefon" data-de="Telefon" data-en="Phone">Telefon</label>
+            <input type="tel" id="telefon" name="Telefon">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="interesse" data-de="Thema *" data-en="Topic *">Thema *</label>
+          <select id="interesse" name="Thema" required>
+            <option value="" data-de="Bitte wählen…" data-en="Please select…">Bitte wählen…</option>
+            <option data-de="Konferenzraum-Planung" data-en="Conference room planning">Konferenzraum-Planung</option>
+            <option data-de="AV-Installation" data-en="AV Installation">AV-Installation</option>
+            <option data-de="Engineering & Ausschreibung" data-en="Engineering & Tendering">Engineering & Ausschreibung</option>
+            <option data-de="Audio Engineering / Einmessung" data-en="Audio Engineering / Calibration">Audio Engineering / Einmessung</option>
+            <option data-de="Steuerung / Programmierung" data-en="Control / Programming">Steuerung / Programmierung</option>
+            <option data-de="Managed Service" data-en="Managed Service">Managed Service</option>
+            <option data-de="LED-Wände / Digital Signage" data-en="LED Walls / Digital Signage">LED-Wände / Digital Signage</option>
+            <option data-de="Sonstiges" data-en="Other">Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="nachricht" data-de="Projektbeschreibung *" data-en="Project description *">Projektbeschreibung *</label>
+          <textarea id="nachricht" name="Nachricht" rows="4" required
+            data-placeholder-de="Raumgröße, gewünschte Funktionen, Zeitplan, Budget-Rahmen…"
+            data-placeholder-en="Room size, desired functions, timeline, budget range…"
+            placeholder="Raumgröße, gewünschte Funktionen, Zeitplan, Budget-Rahmen…"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Neue Beratungsanfrage – Gate Dynamics">
+        <input type="hidden" name="_replyto" value="a.busch@gate-dynamics.de">
+        <button type="submit" class="btn-primary form-submit" data-de="Anfrage senden →" data-en="Send request →">Anfrage senden →</button>
+        <p class="form-note" data-de="Keine Werbung, kein Spam. Nur Arne Busch kontaktiert Sie." data-en="No advertising, no spam. Only Arne Busch will contact you.">Keine Werbung, kein Spam. Nur Arne Busch kontaktiert Sie.</p>
+      </form>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <div class="check">✓</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:10px;" data-de="Vielen Dank!" data-en="Thank you!">Vielen Dank!</h3>
+      <p style="color:var(--muted);" data-de="Ihre Anfrage ist eingegangen. Arne Busch meldet sich persönlich innerhalb von 24 Stunden." data-en="Your enquiry has been received. Arne Busch will personally respond within 24 hours.">Ihre Anfrage ist eingegangen. Arne Busch meldet sich persönlich innerhalb von 24 Stunden.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== YEAR =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== COOKIE BANNER =====
+  (function(){
+    if(localStorage.getItem('cookieConsent')) {
+      document.getElementById('cookieBanner').classList.add('hidden');
+      if(localStorage.getItem('cookieConsent') === 'accepted') loadAnalytics();
+    }
+  })();
+
+  function acceptCookies(){
+    localStorage.setItem('cookieConsent','accepted');
+    document.getElementById('cookieBanner').classList.add('hidden');
+    loadAnalytics();
+  }
+  function declineCookies(){
+    localStorage.setItem('cookieConsent','declined');
+    document.getElementById('cookieBanner').classList.add('hidden');
+  }
+  function loadAnalytics(){
+    // Ersetze G-XXXXXXXXXX mit deiner Google Analytics ID
+    // var s=document.createElement('script');
+    // s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    // s.async=true; document.head.appendChild(s);
+    // window.dataLayer=window.dataLayer||[];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js',new Date()); gtag('config','G-XXXXXXXXXX');
+  }
+
+  // ===== MODAL =====
+  function openModal(){
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  function closeModalOutside(e){
+    if(e.target===document.getElementById('modalOverlay')) closeModal();
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+
+  // ===== FORM =====
+  document.getElementById('beratungsForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = isEnglish ? 'Sending…' : 'Wird gesendet…';
+    btn.disabled = true;
+    document.getElementById('formError').style.display = 'none';
+
+    // Wenn Formspree noch nicht eingerichtet ist, zeige Demo-Erfolg:
+    const action = this.getAttribute('action');
+    if(action.includes('YOUR_FORMSPREE_ID')){
+      setTimeout(()=>{
+        document.getElementById('formContent').style.display='none';
+        document.getElementById('formSuccess').style.display='block';
+      },800);
+      return;
+    }
+
+    try {
+      const data = new FormData(this);
+      const res = await fetch(action, {
+        method:'POST', body:data,
+        headers:{'Accept':'application/json'}
+      });
+      if(res.ok){
+        document.getElementById('formContent').style.display='none';
+        document.getElementById('formSuccess').style.display='block';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      document.getElementById('formError').style.display='block';
+      btn.textContent=originalText;
+      btn.disabled=false;
+    }
+  });
+
+  // ===== MOBILE NAV =====
+  function toggleMobileNav(){
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('hamburgerBtn').classList.toggle('open');
+  }
+  function closeMobileNav(){
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburgerBtn').classList.remove('open');
+  }
+
+  // ===== LANGUAGE SWITCHER =====
+  let isEnglish = false;
+
+  function toggleLanguage(){
+    isEnglish = !isEnglish;
+    document.getElementById('langLabel').textContent = isEnglish ? 'DE' : 'EN';
+    document.getElementById('html-root').setAttribute('lang', isEnglish ? 'en' : 'de');
+
+    // Switch all elements with data-de / data-en
+    document.querySelectorAll('[data-de]').forEach(el => {
+      const key = isEnglish ? 'data-en' : 'data-de';
+      const val = el.getAttribute(key);
+      if(!val) return;
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA'){
+        el.placeholder = el.getAttribute(isEnglish ? 'data-placeholder-en' : 'data-placeholder-de') || val;
+      } else if(el.innerHTML.includes('<')){
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+
+    // Switch page title
+    document.title = isEnglish
+      ? 'Gate Dynamics — Professional AV Integration | Viersen'
+      : 'Gate Dynamics — Professionelle AV-Integration | Viersen';
+  }
+</script>
+
 </body>
 </html>
